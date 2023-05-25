@@ -9,6 +9,7 @@ const Home = () => {
   const [shops, setShops] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [activeShop, setActiveShop] = useState({});
 
   const getData = async () => {
     const resp = await fetchShops();
@@ -21,6 +22,7 @@ const Home = () => {
   useEffect(() => {
     try {
       setIsLoading(true);
+
       getData();
     } catch (e) {
       setError(e.message);
@@ -28,6 +30,12 @@ const Home = () => {
       setIsLoading(false);
     }
   }, []);
+
+  //console.log(activeShop.dishes);
+  const ActiveShopChanged = (id) => {
+    const selectedShop = shops.filter((shop) => shop._id === id);
+    setActiveShop(...selectedShop);
+  };
 
   return (
     <Box as="main" display="flex" p={5}>
@@ -37,8 +45,14 @@ const Home = () => {
           Whoops, something went wrong: {error.message}
         </Box>
       )}
-      {shops.length > 0 && <SideBar shops={shops} />}
-      <ProductsBar />
+      {shops.length > 0 && (
+        <SideBar
+          shops={shops}
+          activeshop={activeShop}
+          OnClick={ActiveShopChanged}
+        />
+      )}
+      {shops.length > 0 && <ProductsBar dishes={activeShop?.dishes} />}
     </Box>
   );
 };
