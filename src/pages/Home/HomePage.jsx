@@ -4,13 +4,15 @@ import { ProductsBar } from "../../components/ProductsBar/ProductsBar";
 import { SideBar } from "../../components/SideBar/SideBar";
 import { fetchShops } from "../../components/api/api";
 import { Loader } from "../../components/Loader/Loader";
+import { useContext } from "react";
+import { Context } from "../../context";
 
 const Home = () => {
   const [shops, setShops] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [activeShop, setActiveShop] = useState({});
-
+  //const [activeShop, setActiveShop] = useState({});
+  const { activeShop, setActiveShop } = useContext(Context);
   const getData = async () => {
     const resp = await fetchShops();
     if (!resp) {

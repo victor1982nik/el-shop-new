@@ -1,12 +1,46 @@
 import { Form, Input, Label, Title } from "./UserBar.styled";
+import { useDebounce } from "../hooks/debounceHook";
+import { useEffect, useState } from "react";
 
-export default function UserBar({ user, setUser }) {
+export default function UserBar({ user, changeUser }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+
+  useEffect(() => {
+    if (!user) {
+      setName("");
+      setEmail("");
+      setPhone("");
+      setAddress("");
+    }
+  }, [user]);
+  const debouncedRequest = useDebounce(() => {
+    changeUser({ name, email, phone, address });
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const obj = {};
-    obj[name] = value;
 
-    setUser(obj);
+    switch (name) {
+      case "name":
+        setName(value);
+        break;
+      case "email":
+        setEmail(value);
+        break;
+      case "phone":
+        setPhone(value);
+        break;
+      case "address":
+        setAddress(value);
+        break;
+      default:
+        return;
+    }
+
+    debouncedRequest();
   };
 
   return (
@@ -16,9 +50,11 @@ export default function UserBar({ user, setUser }) {
         <Input
           type="text"
           name="name"
-          title="The name can only consist of letters, apostrophe, dash and spaces."
+          id="name"
+          autoComplete="off"
+          placeholder="Only letters, dash and spaces"
           required
-          //defaultValue={user.name}
+          value={name}
           onChange={handleChange}
         />
       </Label>
@@ -27,10 +63,12 @@ export default function UserBar({ user, setUser }) {
         <Input
           type="text"
           name="email"
+          id="email"
+          autoComplete="off"
           pattern="/.+@.+\..+/i"
-          title="Enter your email address to receive order tracking emails"
+          placeholder="your email"
           required
-          //defaultValue={user.email}
+          value={email}
           onChange={handleChange}
         />
       </Label>
@@ -39,10 +77,11 @@ export default function UserBar({ user, setUser }) {
         <Input
           type="tel"
           name="phone"
-          pattern="^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          id="phone"
+          autoComplete="off"
+          placeholder="+380xxxxxxxxx"
           required
-          //defaultValue={user.phone}
+          value={phone}
           onChange={handleChange}
         />
       </Label>
@@ -51,9 +90,12 @@ export default function UserBar({ user, setUser }) {
         <Input
           type="tel"
           name="address"
+          id="address"
+          autoComplete="off"
           title="Enter the address where the goods need to be delivered"
           required
-          //defaultValue={user.address}
+          value={address}
+          placeholder="delivery address"
           onChange={handleChange}
         />
       </Label>

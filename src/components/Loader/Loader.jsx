@@ -1,21 +1,19 @@
-import { ThreeCircles } from "react-loader-spinner";
-import { Spinner } from "./Loader.styled.jsx";
+import { Bars } from 'react-loader-spinner';
 
 export const Loader = () => {
   return (
-    <Spinner>
-      <ThreeCircles
-        height="100"
-        width="100"
-        color="#F59256"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
-        ariaLabel="three-circles-rotating"
-        outerCircleColor=""
-        innerCircleColor=""
-        middleCircleColor=""
-      />
-    </Spinner>
+    <>
+      <div style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+        <Bars
+          height="80"
+          width="80"
+          color="#4fa94d"
+          ariaLabel="bars-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      </div>
+    </>
   );
 };

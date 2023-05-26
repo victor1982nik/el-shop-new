@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Form = styled.form`
-  width: 350px;
+  width: 30%;
   height: 500px;
   border: 1px solid #757575;
   border-radius: 10px;
@@ -18,12 +18,12 @@ export const Form = styled.form`
 `;
 
 export const Label = styled.label`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: flex-start;
   background-color: #848892;
-  padding: 10px;
+  padding: 10px 30px 0px;
   border-radius: 4px;
   box-shadow: 0px 4px 1px rgba(0, 0, 0, 0.2), 0px 2px 1px rgba(0, 0, 0, 0.14),
     0px 2px 3px rgba(0, 0, 0, 0.12);

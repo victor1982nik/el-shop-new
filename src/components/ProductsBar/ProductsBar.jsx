@@ -9,6 +9,7 @@ export const ProductsBar = ({ dishes }) => {
   //if (activeshop) return;
   //const { dishes } = activeshop;
   const handleClick = (dish) => {
+    dish.qwantity=1;
     setCart((s) => [...s, dish]);
   };
   return (

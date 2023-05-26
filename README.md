@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# GENERAL
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Web application of a simple online store that allows you to select the necessary product from the proposed range in the right quantity with automatic calculation of the order amount.
 
 ## Available Scripts
 
