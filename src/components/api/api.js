@@ -16,7 +16,7 @@ export async function fetchShops() {
 export async function addOrder(data) {
   //const body = { values: { title, text } };
   try {
-    const result = await axios.post("/orders", data);
+    const result = await axios.post("orders", data);
     return result.data;
   } catch (e) {
     console.log(e.message);

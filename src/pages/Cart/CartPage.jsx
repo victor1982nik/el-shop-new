@@ -14,7 +14,18 @@ const Cart = () => {
 
   const handleOrderSend = async (sum) => {
     //console.log("hadleordersend");
-    const data = { shopid: activeShop._id, user, order: cart, total: sum };
+    const filteredcart = cart.map((item) => ({
+      name: item.name,
+      qwantity: Number(item.qwantity),
+      price: item.price,
+    }));
+    //console.log("filtered", filteredcart);
+    const data = {
+      shopid: activeShop._id,
+      user,
+      order: filteredcart,
+      total: sum,
+    };
     const resp = await addOrder(data);
     console.log(resp);
     //console.log("data ready to send", data);
