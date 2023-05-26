@@ -9,9 +9,9 @@ import { ThemeProvider } from "styled-components";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/el-shop-new">
+      {/* basename="/el-shop-new"> */}
       <ThemeProvider theme={theme}>
-        {/* basename="/el-shop-new"> */}
         <App />
       </ThemeProvider>
     </BrowserRouter>
