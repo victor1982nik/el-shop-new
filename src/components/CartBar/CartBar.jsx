@@ -6,10 +6,8 @@ import { Context } from "../../context";
 
 export const CartBar = ({ resetUser, sendOrder }) => {
   const { cart: dishes } = useContext(Context);
-  //console.log("dishes", dishes);
 
   const handleClick = () => {
-    //console.log("Send order");
     sendOrder(totalprice);
   };
 

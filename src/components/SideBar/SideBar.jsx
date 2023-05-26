@@ -2,7 +2,7 @@ import { Box } from "../Box/Box";
 import { List, Item, Title } from "./SideBar.styled";
 
 export const SideBar = ({ shops, activeshop, OnClick }) => {
-  //console.log("shops", shops);
+  
   return (
     <>
       <Box bg="tomato" width="30%" height="500px">

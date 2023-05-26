@@ -18,7 +18,6 @@ export const CartItem = ({ dish }) => {
     <>
       <Img src={dish.img} alt={dish.name} />
       <p>Dish: {dish.name}</p> <p>Price: {dish.price}</p>
-      {/* <button onClick={() => handleClick(dish)}>Add to cart</button> */}
       <form>
         <label htmlFor="qwantity">
           Qwantity:

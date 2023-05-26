@@ -5,9 +5,7 @@ import { Context } from "../../context";
 
 export const ProductsBar = ({ dishes }) => {
   const { setCart } = useContext(Context);
-  //console.log(dishes);
-  //if (activeshop) return;
-  //const { dishes } = activeshop;
+ 
   const handleClick = (dish) => {
     dish.qwantity=1;
     setCart((s) => [...s, dish]);

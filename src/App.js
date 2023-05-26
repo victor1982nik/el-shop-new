@@ -9,7 +9,7 @@ import { useState } from "react";
 function App() {
   const [cart, setCart] = useState([]);
   const [activeShop, setActiveShop] = useState({});
-  //console.log(cart);
+
   return (
     <>
       <Context.Provider value={{ cart, setCart, activeShop, setActiveShop }}>
