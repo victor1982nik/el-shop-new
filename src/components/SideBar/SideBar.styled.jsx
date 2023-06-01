@@ -21,4 +21,6 @@ export const Item = styled.li`
   cursor: pointer;
   border-radius: 8px;
   background: ${(props) => (props.selected ? "lightgreen" : "blue")};
+
+  pointer-events: ${(props) => (props.disabled ? "none" : "auto")};
 `;

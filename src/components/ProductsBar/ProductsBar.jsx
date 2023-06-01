@@ -1,30 +1,73 @@
 import { Box } from "../Box/Box";
-import { Img, Item, List, Title } from "./ProductsBar.styled";
+import {
+  Button,
+  Hero,
+  Img,
+  InnerText,
+  Item,
+  List,
+  MainTitle,
+  Text,
+  Title,
+} from "./ProductsBar.styled";
 import { useContext } from "react";
 import { Context } from "../../context";
+import { toast } from "react-toastify";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 export const ProductsBar = ({ dishes }) => {
-  const { setCart } = useContext(Context);
- 
+  const { setCart, cart } = useContext(Context);
+
   const handleClick = (dish) => {
-    dish.qwantity=1;
+    const isInCart = cart.find((item) => item.name === dish.name);
+    if (isInCart) {
+      toast.error("Already addded to cart");
+      return;
+    }
+    dish.qwantity = 1;
     setCart((s) => [...s, dish]);
+    toast.success(`Added to cart ${dish.name}`, {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
   return (
     <>
-      <Box bg="violet" width="70%">
+      <Box border="1px solid black" width="75%" borderRadius={5}>
         {!dishes ? (
-          <p>Выберите магазин</p>
+          <>
+            <MainTitle>Online food shop</MainTitle>
+            <Title>Choose your shop</Title>
+            <Box textAlign="center">
+              <Hero
+                src={backendUrl + "/dishes/chooseshop.jpg"}
+                alt="choose restaurant"
+              />
+            </Box>
+          </>
         ) : (
           <>
             <Title>Dishes</Title>
             <List>
               {dishes.map((dish) => (
                 <Item key={dish._id}>
-                  <Img src={dish.img} alt={dish.name} />
-                  <p>Dish: {dish.name}</p>
-                  <p>Price: {dish.price}</p>
-                  <button onClick={() => handleClick(dish)}>Add to cart</button>
+                  <Img src={backendUrl + dish.image} alt={dish.name} />
+                  <Box p={4}>
+                    <Text>
+                      Dish: <InnerText>{dish.name}</InnerText>
+                    </Text>
+                    <Text>
+                      Price: <InnerText>{dish.price} UAH</InnerText>
+                    </Text>
+                    <Button onClick={() => handleClick(dish)}>
+                      Add to cart
+                    </Button>
+                  </Box>
                 </Item>
               ))}
             </List>

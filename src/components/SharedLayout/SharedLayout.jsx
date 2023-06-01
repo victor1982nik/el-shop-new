@@ -19,11 +19,12 @@ export const SharedLayout = () => {
   return (
     <>
       <Box as="header" pt={4} pb={4} borderBottom="normal" bg="lightgrey">
-        <Box as="nav" pl={4}>
+        <Box as="nav" pl={5} fontSize={20}>
           <Link to="/" end>
             Home
           </Link>
           <Link to="/cart">Cart</Link>
+          <Link to="/history">History</Link>
         </Box>
       </Box>
       <Box pr={4} pl={4} height="100%">

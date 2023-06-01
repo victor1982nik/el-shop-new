@@ -1,9 +1,9 @@
-import { Bars } from 'react-loader-spinner';
+import { Bars } from "react-loader-spinner";
 
 export const Loader = () => {
   return (
     <>
-      <div style={{ marginLeft: 'auto', marginRight: 'auto' }}>
+      <div style={{ marginLeft: "auto", marginRight: "auto" }}>
         <Bars
           height="80"
           width="80"

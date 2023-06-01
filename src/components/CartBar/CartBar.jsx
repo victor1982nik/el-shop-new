@@ -1,8 +1,9 @@
 import { Box } from "../Box/Box";
 import { CartItem } from "../CardItem/CardItem";
-import { List, Item, Title, Button } from "./CartBar.styled";
+import { List, Item, Text, Button, InnerText, Hero } from "./CartBar.styled";
 import { useContext } from "react";
 import { Context } from "../../context";
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
 export const CartBar = ({ resetUser, sendOrder }) => {
   const { cart: dishes } = useContext(Context);
@@ -16,9 +17,17 @@ export const CartBar = ({ resetUser, sendOrder }) => {
   }, 0);
 
   return (
-    <Box width="70%" border="1px solid black" borderRadius="8px">
+    <Box width="75%" border="1px solid black" borderRadius="8px">
       {!dishes.length ? (
-        <div>Cart is empty</div>
+        <>
+          <Text>Cart is empty</Text>
+          <Box textAlign="center">
+            <Hero
+              src={backendUrl + "/dishes/cart.jpg"}
+              alt="choose restaurant"
+            />
+          </Box>
+        </>
       ) : (
         <>
           <List>
@@ -28,7 +37,9 @@ export const CartBar = ({ resetUser, sendOrder }) => {
               </Item>
             ))}
           </List>
-          <Title>Total: {totalprice}</Title>
+          <Text>
+            Total: <InnerText>{totalprice} UAH</InnerText>
+          </Text>
           <Box display="flex" justifyContent="center">
             <Button onClick={handleClick}>Send Order</Button>
           </Box>

@@ -13,6 +13,7 @@ const Home = () => {
   const [error, setError] = useState(null);
   //const [activeShop, setActiveShop] = useState({});
   const { activeShop, setActiveShop } = useContext(Context);
+  
   const getData = async () => {
     const resp = await fetchShops();
     if (!resp) {
@@ -40,7 +41,7 @@ const Home = () => {
   };
 
   return (
-    <Box as="main" display="flex" p={5}>
+    <Box as="main" display="flex" p={5} alignItems="stretch">
       {isLoading && <Loader />}
       {error && (
         <Box color="ff0000" font-size="20px" font-weight="400">
