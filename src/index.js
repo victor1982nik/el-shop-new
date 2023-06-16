@@ -4,13 +4,12 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { theme } from "./theme";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "@emotion/react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter basename="/el-shop-new">
-      {/* basename="/el-shop-new"> */}
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
